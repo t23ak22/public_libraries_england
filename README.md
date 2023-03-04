@@ -1,6 +1,7 @@
 App has bees hosted successfully at render at - https://public-libraries-england-render.onrender.com
-
 And the app was successfully uploaded to github and was able to push changes to the repository accordingly(https://github.com/t23ak22/public_libraries_england).
+A file named 'requirements.txt' was generated specifying all the dependencies of the application.
+
 
 This is an app which helps users to find the public library available in their locality.
 The home page contains the form element which is a text box where sers can enter the post code.

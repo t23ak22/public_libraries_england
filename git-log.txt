@@ -1,0 +1,11 @@
+* 153629f : modified README.md
+* ff513fc : added requirements.txt
+* f76d0b8 : added exception handling to find_library.py
+* b99c7e9 : added exception handling in database.py
+* ab8aa55 : modified index.html appearance and added example postcodes
+* f1556f7 : added post code validity check
+* 1c1dc30 : added check in find_library.py for no user input text
+* ba1a488 : updated index.html and library_details.html
+* fe51a4f : updated result html to library_details html and modified query in find_library.py
+* bce50c1 : modified table 2 and result.html
+* 9b74083 : initial commit
