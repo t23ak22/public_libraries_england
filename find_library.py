@@ -1,10 +1,19 @@
 from flask import Flask, render_template, request
+import re
 import sqlite3
 app = Flask(__name__)
 
 @app.route('/', )
 def index():
-    return render_template("index.html")    
+    return render_template("index.html")  
+
+#Defining a function that checks the format of postcode entered by user using regular expression.
+def check_postcode_validity(postcode):
+  regex = r'^[A-Za-z]{1,2}\d{1,2}[A-Za-z]?\s?\d[A-Za-z]{2}$' 
+  if re.match(regex, postcode):
+    return True
+  else:
+    return False 
 
 @app.route('/search_result', methods=["GET"])
 def display_result():
@@ -27,6 +36,8 @@ def display_result():
 
     #Closing the connection to database.
     conn.close()
-    if not pc:
-        return "please enter a valid post code within England"
-    return render_template('library_details.html', rows=rows)
+
+    #Checking if the postcode entered is a valid one using regular expression.
+    if check_postcode_validity(pc_uppercase):
+      return render_template('library_details.html', rows=rows)
+    return "Please try again with a valid post code within England."
