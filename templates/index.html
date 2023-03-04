@@ -21,18 +21,24 @@
         p {
         margin-bottom: 10px;
         }
+        .small {
+        font-size: 14px;
+        }
         
     </style>
 </head>
 <body>
-    <h1 class="centered-heading"> Find Public Libraries in England</h1>
+    <h1> Find Public Libraries in England</h1>
     <p>
-        Enter your post code to find the public library in your area.
+       <b> Enter your post code to find the public library in your area.</b>
     </p>
     <form action ="/search_result" method ="get">
         <input name = "pc" placeholder = "PostCode" type = "text" autocomplete="postal-code">           
         <input type = "submit" value = "Search">
     </form>
+    <p class="small">
+        Example postodes: HA8 0UB, NW11 8HE, B7 4PT.
+    </p>
     
 </body>
 </html>
