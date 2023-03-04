@@ -21,21 +21,26 @@ def display_result():
     pc=request.args.get("pc")
     pc_uppercase=pc.upper()
 
-    # open the connection to the database.
-    conn = sqlite3.connect('public_libraries_data.db')
-    conn.row_factory = sqlite3.Row
-    cur = conn.cursor()
+    try:
+      # open the connection to the database.
+      conn = sqlite3.connect('public_libraries_data.db')
+      conn.row_factory = sqlite3.Row
+      cur = conn.cursor()
 
-    #Here, I am using backward slash (\) to tell python to ignore new lines in the sql query.
-    cur.execute(f"select * from libraries \
-        JOIN post_codes_table \
-        ON libraries.Post_codes=post_codes_table.Postcode \
-        WHERE REPLACE(libraries.Post_codes,' ','')=REPLACE('{pc_uppercase}', ' ', '')")
-    #Stores all details fetched using the query to a list named rows.
-    rows = cur.fetchall()
+      #Here, I am using backward slash (\) to tell python to ignore new lines in the sql query.
+      cur.execute(f"select * from libraries \
+          JOIN post_codes_table \
+          ON libraries.Post_codes=post_codes_table.Postcode \
+          WHERE REPLACE(libraries.Post_codes,' ','')=REPLACE('{pc_uppercase}', ' ', '')")
+      #Stores all details fetched using the query to a list named rows.
+      rows = cur.fetchall()
 
-    #Closing the connection to database.
-    conn.close()
+    except:
+      print("Error on connecting to database.")
+
+    finally:
+      #Closing the connection to database.
+      conn.close()
 
     #Checking if the postcode entered is a valid one using regular expression.
     if check_postcode_validity(pc_uppercase):
