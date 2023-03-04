@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Libraries</title>
+    <style>
+        .container {
+            text-align: center;
+        }
+        
+        h1, p, table {
+            
+            text-align: center;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        table {
+            border: 1px solid black;
+        }
+
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <h1> Library Details</h1>
+    <p>
+        Following are the details of public library(ies) available at post code
+        {% for row in rows %}
+        {{row["Post_codes"]}}
+        |
+        {% endfor %}
+    </p>
+    <table>
+		<thead>
+			<tr>
+			<th>Library Name</th>
+			<th>Library Service</th>
+			<th>Address</th>
+            <th>Email</th>
+            <th>Website</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for row in rows %}
+				<tr>
+					<td>{{ row["Library_name"] }}</td>
+					<td>{{ row["Library_service"]}}</td>
+					<td>{{ row["Address"] }}</td>
+                    <td>{{row["email"]}}</td>
+                    <td>{{row["website"]}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+    </div>
+</body>
+</html>

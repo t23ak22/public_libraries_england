@@ -10,12 +10,21 @@ def index():
 def display_result():
     # Receiving post code from the user which the user entered in the web page
     pc=request.args.get("pc")
+    pc_uppercase=pc.upper()
 
-    # open the connection to the database
+    # open the connection to the database.
     conn = sqlite3.connect('public_libraries_data.db')
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
-    cur.execute(f"select * from libraries JOIN post_codes_table ON libraries.Post_codes=post_codes_table.Postcode WHERE libraries.Post_codes='{pc}'")
+
+    #Here, I am using backward slash (\) to tell python to ignore new lines in the sql query.
+    cur.execute(f"select * from libraries \
+        JOIN post_codes_table \
+        ON libraries.Post_codes=post_codes_table.Postcode \
+        WHERE REPLACE(libraries.Post_codes,' ','')=REPLACE('{pc_uppercase}', ' ', '')")
+    #Stores all details fetched using the query to a list named rows.
     rows = cur.fetchall()
+
+    #Closing the connection to database.
     conn.close()
-    return render_template('result.html', rows=rows)
+    return render_template('library_details.html', rows=rows)

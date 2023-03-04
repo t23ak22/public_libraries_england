@@ -6,14 +6,13 @@
     <title>Public Libraries</title>
 </head>
 <body>
-    <h1> Find Public Libraries in England</h1>
+    <h1 class="centered-heading"> Find Public Libraries in England</h1>
     <p>
         Enter your post code to find the public library in your area.
     </p>
     <form action ="/search_result" method ="get">
-    <input name = "pc" placeholder = "PostCode" type = "text">
-                   
-            <input type = "submit" value = "submitForm">
+        <input name = "pc" placeholder = "PostCode" type = "text" autocomplete="postal-code">           
+        <input type = "submit" value = "Search">
     </form>
     
 </body>
