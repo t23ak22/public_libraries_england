@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,13 +10,28 @@
     <p>
         Enter your post code to find the public library in your area.
     </p>
-    
+    <!--
+    {{rows}}
+    -->
+
+    <!--
     {% for row in rows %}
     <p>Library: 
-       <b>{{row["Library_name"]}}</b> | 
-       {{row["Post_code"]}} | 
+       <b>{{row["Library_name"]}}</b> 
+            {{row["Post_code"]}} | 
         {{ row["Address"]}} 	
     </p>
     {% endfor %}
+    -->
+    {% for row in rows %}
+    <p>Following are the details of public library(ies) available at post code {{row["Post_codes"]}}: \n
+       <b>{{ row["Library_name"] }}</b>
+        {{ row["Library_service"]}} |
+        {{ row["Address"] }} |
+        {{row["email"]}}
+        {{row["website"]}}	
+    </p>
+    {% endfor %}
+
 </body>
 </html>

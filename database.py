@@ -18,7 +18,7 @@ conn.execute('CREATE TABLE libraries (LibraryID INTEGER PRIMARY KEY AUTOINCREMEN
 print("table created successfully")
 
 # create table 2
-conn.execute('CREATE TABLE post_codes_table (Postcode TEXT PRIMARY KEY UNIQUE, Address TEXT)')
+conn.execute('CREATE TABLE post_codes_table (Postcode TEXT PRIMARY KEY UNIQUE, Address TEXT,email TEXT, website TEXT)')
 print("table created successfully")
 
 # Insert data into table 1
@@ -45,8 +45,10 @@ with open('Librariesdata/Public_libraries_in_England-_extended_basic_dataset__as
 
         Post_code = row[3]
         Address = row[2]
+        email = row[14]
+        website = row[15]
 
-        cur.execute('INSERT OR IGNORE INTO post_codes_table VALUES (?,?)', (Post_code, Address))
+        cur.execute('INSERT OR IGNORE INTO post_codes_table VALUES (?,?,?,?)', (Post_code, Address, email, website))
         conn.commit()
 print("data parsed successfully")
 
