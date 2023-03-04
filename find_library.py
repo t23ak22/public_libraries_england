@@ -27,4 +27,6 @@ def display_result():
 
     #Closing the connection to database.
     conn.close()
+    if not pc:
+        return "please enter a valid post code within England"
     return render_template('library_details.html', rows=rows)
